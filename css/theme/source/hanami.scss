@@ -42,6 +42,11 @@ $heading4Size: 1.0em;
 		p, small, ol {
 			font-weight: 100;
 		}
+
+		img.no-border {
+			border: 0;
+			box-shadow: none;
+		}
 	}
 }
 
