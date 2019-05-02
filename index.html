@@ -44,36 +44,36 @@
         <div class="slides">
             <section>
                 <h1>Hanami 2.0</h1>
+                <small>by <a href="https://twitter.com/mereghost">@mereghost</a></small>
             </section>
             <section>
-                <h2>What's Hanami?</h2>
+                <h2>Whoami</h2>
+                <pre><code data-trim data-line-numbers="2-4">
+                    host$> id
+                    uid=40(mereghost) gid=985(developer) 
+                    groups=985(developers),15(ruby),977(legacy),986(rpg) \
+                    ,991(boardgames),993(beer)
+                </code></pre>
+            </section>
+            <section>
+                <h2>What's <a href="https://hanamirb.org">Hanami</a>?</h2>
                 <p class="fragment fade-in">Hanami is a <strong>modern</strong> web framework for Ruby</p>
-            </section>
-            <section data-background-color="#fff">
-                <h2 style="color: red;"> ACHTUNG! </h2>
-                <p>The following are In Our Opinion.</p>
-                <small>(<strong>Our</strong> as in the people involved in the project)</small>
+
             </section>
             <section>
                 <section>
-                    <h3>How you keep a framework "modern"?</h3>
+                    <h4>How you keep a framework <strong>modern</strong>?</h4>
                 </section>
                 <section>
-                    <h3>You adapt</h3>
-                    <p>To what tecniques seem useful and powerful</p>
+                    <h3>Adapt & Adopt</h3>
+                    <p>Ideas, concepts and techniques that seem useful</p>
                 </section>
-                <section>
-                    <h3>You adopt</h3>
-                    <p>Ideas and concepts and bring them into the project</p>
-                </section>
-            </section>
-            <section>
                 <section>
                     <h3>Reshape the features</h3>
                     <small>but...</small>
                 </section>
                 <section>
-                    <h3>Keep the pillars</h3>
+                    <h3>Keep the guiding pillars</h3>
                     <ol>
                         <li class="fragment">Strong OOP</li>
                         <li class="fragment">Testability</li>
@@ -188,8 +188,6 @@ end
             </section>
             <section>
                 FP concepts
-                - Pipelines:
-                - Router . Action > Validator > Repository > Action > View > Template
                 - Small SRP PORO.
                 - #call as an interface
                 Dependecy Injection
@@ -198,12 +196,31 @@ end
                 Immutability and Pure Functions
             </section>
             <section>
-                Hanami + ROM + Dry.rb
+                <h2>We target <span style="color: #F00; font-weight: 400">Ruby</span> itself</h2>
+                <p>And we don't want to create a walled garden</p>
+            </section>
+            <section>
+                <figure style="display: inline-block" class="vmiddle">
+                    <img class="no-border vmiddle" src="/imgs/logo.png" alt="Hanami">
+                    <figcaption>Hanami</figcaption>
+                </figure> +
+                <figure style="display: inline-block" class="vmiddle">
+                    <img class="no-border" src="/imgs/Logo.svg" alt="ROM" height="143px">
+                    <figcaption>ROM</figcaption>
+                </figure> +
+                <figure style="display: inline-block" class="vmiddle">
+                    <img class="no-border vmiddle" src="/imgs/dry-rb.svg" alt="DRY.rb" height="143px">
+                    <figcaption>dry.rb</figcaption>
+                </figure>
+            </section>
+            <section>
+                <h2>Thanks!</h2>
+                <p>I have some Hanami stickers.</p>
             </section>
         </div>
     </div>
 
-    <script src="js/reveal.js"></script>
+    <script src=" js/reveal.js"> </script>
     <script>
         // More info https://github.com/hakimel/reveal.js#configuration
         Reveal.initialize({
@@ -216,8 +233,18 @@ end
 
             // More info https://github.com/hakimel/reveal.js#dependencies
             dependencies: [
-                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                {
+                    src: 'plugin/markdown/marked.js', condition: function () {
+                        return
+                        !!document.querySelector('[data-markdown]');
+                    }
+                },
+                {
+                    src: 'plugin/markdown/markdown.js', condition: function () {
+                        return
+                        !!document.querySelector('[data-markdown]');
+                    }
+                },
                 { src: 'plugin/highlight/highlight.js', async: true },
                 { src: 'plugin/search/search.js', async: true },
                 { src: 'plugin/zoom-js/zoom.js', async: true },
