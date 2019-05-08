@@ -58,7 +58,9 @@
             <section>
                 <h2>What's <a href="https://hanamirb.org">Hanami</a>?</h2>
                 <p class="fragment fade-in">Hanami is a <strong>modern</strong> web framework for Ruby</p>
-
+                <aside class="notes">
+                    What is modern?
+                </aside>
             </section>
             <section>
                 <section>
@@ -66,14 +68,23 @@
                 </section>
                 <section>
                     <h3>Adapt & Adopt</h3>
-                    <p>Ideas, concepts and techniques that seem useful</p>
+                    <p>
+                        Useful techniques
+                        <span class="fragment">& ideas</span>
+                    </p>
+                    <aside class="notes">
+                        A lot of cool ideas have appeared over the years
+                    </aside>
                 </section>
                 <section>
-                    <h3>Reshape the features</h3>
-                    <small>but...</small>
+                    <h3>But how then you don't end up with a mess?</h3>
                 </section>
                 <section>
-                    <h3>Keep the guiding pillars</h3>
+                    <h3>Reshape the features
+                        <span class="fragment">
+                            <strong>But</strong>
+                            Keep the guiding pillars</span>
+                    </h3>
                     <ol>
                         <li class="fragment">Strong OOP</li>
                         <li class="fragment">Testability</li>
@@ -83,11 +94,17 @@
                 </section>
             </section>
             <section>
+                <h3>And now onto the details</h3>
+            </section>
+            <section>
                 <section>
                     <h3>Multiple apps</h3>
                     <p>
                         Lots of configuration & Routing
                     </p>
+                    <aside class="notes">
+                        Hanami suports multiple apps so you can go monolith first
+                    </aside>
                 </section>
                 <section>
                     <pre><code class="hljs" data-trim data-line-numbers="1-3,6">
@@ -130,13 +147,15 @@ end
                 </section>
                 <section>
                     <h3>Unification of App configs</h3>
-                    <p>We introduce defaults and you override only when/where needed</p>
+                    <p> Secure and sane defaults.</p>
+                    <small class="fragment">Override when/where needed.</small>
                 </section>
                 <section>
                     <pre><code data-trim>
 # config/application.rb
 module AwesomeApp
   class Application < Hanammi::Application
+    # comments galore
   end
 end
                     </code></pre>
@@ -151,8 +170,8 @@ Hanami.application.routes do
     get '/dashboard', to: 'dashboard#index'
   end
 
-  mount :api, at: 'api' do
-    resources :pictures
+  mount :api, at: '/api' do
+    resources :accounts
   end
 end
                     </code></pre>
@@ -162,7 +181,7 @@ end
                 <section>
                     <h3>Functional Programming</h3>
                     <p>Everyone seems to 💖 it.</p>
-                    <small class="fragment">but we also 💖 Ruby</small>
+                    <p class="fragment">but we also 💖 Ruby</p>
                 </section>
                 <section>
                     <h3>Thankfully Ruby is multi-paradigm</h3>
@@ -171,15 +190,63 @@ end
                 <section>
                     <h3>Pipelines</h3>
                     <img class="no-border" src="/imgs/flow.svg" alt="Flow">
+                    <aside class="notes">
+                        Anyone talked about Flow Based Programming?
+                    </aside>
                 </section>
                 <section>
-                    <h3>Single Responsibility Principle</h3>
+                    <h3>Small & very focused components</h3>
+                    <p>
+                        This satisfies the Single Responsibility Principle and
+                        ensures better testability
+                    </p>
+                </section>
+                <section>
+                    <h3>Ruby has kind of an interface for functions</h3>
+                    <p>
+                        <span class="code">#call</span> to the rescue</p>
                 </section>
                 <section>
                     <h3><em>Callable</em> Objects</h3>
+                    <p>
+                        Every Hanami component will respond to
+                        <span class="code">#call</span>, and we encourage you
+                        to do the same.
+                    </p>
+                    <pre><code data-trim>
+class SomeVeryUsefulThing
+  def call(important_arg)
+    SomeOtherUsefulObject.new.do_serious_work(important_arg)
+  end
+end
+                    </code></pre>
+                    <aside class="notes">
+                        And you ask me why?
+                    </aside>
                 </section>
                 <section>
                     <h3>Dependency Injection</h3>
+                    <pre style="font-size: 0.4em"><code data-trim data-line-numbers="2-4,7,12-13">
+class SomeVeryUsefulThing
+  def initialize(collaborator: SomeOtherUsefulObject.new)
+    @collaborator = collaborator
+  end
+
+  def call(important_arg)
+    @collaborator.do_serious_work(important_arg)
+  end
+end
+
+RSpec.describe SomeVeryUsefulThing do
+  subject { described_class.new(collaborator: collaborator) }
+  let(:collaborator) { double('useful_object', do_serious_work: true) }
+
+  it 'works' ...
+end
+                    </code></pre>
+                    <aside class="notes">
+                        #init for dependencies, #call for input
+                    </aside>
                 </section>
                 <section>
                     <h3>Pure Functions</h3>
@@ -187,11 +254,6 @@ end
                 </section>
             </section>
             <section>
-                FP concepts
-                - Small SRP PORO.
-                - #call as an interface
-                Dependecy Injection
-                - initialize for dependency, call for input
                 - Container + import
                 Immutability and Pure Functions
             </section>
