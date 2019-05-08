@@ -94,9 +94,6 @@
                 </section>
             </section>
             <section>
-                <h3>And now onto the details</h3>
-            </section>
-            <section>
                 <section>
                     <h3>Multiple apps</h3>
                     <p>
@@ -185,7 +182,7 @@ end
                 </section>
                 <section>
                     <h3>Thankfully Ruby is multi-paradigm</h3>
-                    <small>FP inpiration for better OO</small>
+                    <small>Inspiration from FP techniques for better OO</small>
                 </section>
                 <section>
                     <h3>Pipelines</h3>
@@ -197,9 +194,16 @@ end
                 <section>
                     <h3>Small & very focused components</h3>
                     <p>
-                        This satisfies the Single Responsibility Principle and
-                        ensures better testability
+                        This satisfies the SRP and ensures better testability
                     </p>
+                    <pre><code data-trim>
+class Web::Actions::Accounts::Create < Web::Action
+  def handle(req, res)
+    accounts = AccountRepository.new
+    #...
+  end
+end                        
+                    </code></pre>
                 </section>
                 <section>
                     <h3>Ruby has kind of an interface for functions</h3>
@@ -250,34 +254,62 @@ end
                 </section>
                 <section>
                     <h3>Pure Functions</h3>
-                    <p>aka Immutability</p>
+                    <p class="fragment">
+                        So components can be initialized on boot and reused forever
+                    </p>
+
+                    <aside class="notes">
+                        Output depends only on the input (aka Immutability)
+                    </aside>
+                </section>
+                <section>
+                    <h3>Application Container</h3>
+                    <pre><code data-trim>
+class Web::Actions::Accounts::Create < Web::Action
+  import :accounts
+
+  def handle(req, res)
+    account = accounts.create(req.params[:account])
+    res[:account] = account
+  end
+end
+                    </code></pre>
                 </section>
             </section>
             <section>
-                - Container + import
-                Immutability and Pure Functions
+                <section>
+                    <h3>Ecosystem</h3>
+                    <p>A part of the Ruby community share these principles</p>
+                </section>
+                <section>
+                    <figure style="display: inline-block" class="vmiddle">
+                        <img class="no-border vmiddle" src="/imgs/logo.png" alt="Hanami">
+                        <figcaption>Hanami</figcaption>
+                    </figure> +
+                    <figure style="display: inline-block" class="vmiddle">
+                        <img class="no-border" src="/imgs/Logo.svg" alt="ROM" height="143px">
+                        <figcaption>ROM</figcaption>
+                    </figure> +
+                    <figure style="display: inline-block" class="vmiddle">
+                        <img class="no-border vmiddle" src="/imgs/dry-rb.svg" alt="DRY.rb" height="143px">
+                        <figcaption>dry.rb</figcaption>
+                    </figure>
+                    <aside class="notes">
+                        Dedupe gems, collaboration. Hanami where everything meets.
+                    </aside>
+                </section>
+                <section>
+                    <h2>We target <span style="color: #F00; font-weight: 400">Ruby</span> itself</h2>
+                    <p>And we don't want to create a walled garden</p>
+                </section>
             </section>
             <section>
-                <h2>We target <span style="color: #F00; font-weight: 400">Ruby</span> itself</h2>
-                <p>And we don't want to create a walled garden</p>
-            </section>
-            <section>
-                <figure style="display: inline-block" class="vmiddle">
-                    <img class="no-border vmiddle" src="/imgs/logo.png" alt="Hanami">
-                    <figcaption>Hanami</figcaption>
-                </figure> +
-                <figure style="display: inline-block" class="vmiddle">
-                    <img class="no-border" src="/imgs/Logo.svg" alt="ROM" height="143px">
-                    <figcaption>ROM</figcaption>
-                </figure> +
-                <figure style="display: inline-block" class="vmiddle">
-                    <img class="no-border vmiddle" src="/imgs/dry-rb.svg" alt="DRY.rb" height="143px">
-                    <figcaption>dry.rb</figcaption>
-                </figure>
+                <h2>The present of Ruby is bright</h2>
+                <h4>And the future is exciting</h4>
             </section>
             <section>
                 <h2>Thanks!</h2>
-                <p>I have some Hanami stickers.</p>
+                <small>I have Hanami some stickers</small>
             </section>
         </div>
     </div>
