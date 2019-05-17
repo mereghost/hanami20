@@ -39,7 +39,7 @@ $heading4Size: 1.0em;
 
 .reveal {
 	section {
-		p, small, ol {
+		p, small, ol, ul {
 			font-weight: 100;
 		}
 
@@ -56,6 +56,14 @@ $heading4Size: 1.0em;
 			font-family: Hack, 'Courier New', Courier, monospace;
 			background: #ddd;
 			font-size: 0.8em;
+		}
+
+		h3 {
+			span.red {
+				color: #f00;
+				font-weight: 300;
+			}
+
 		}
 	}
 }

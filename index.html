@@ -17,12 +17,14 @@
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Overpass:200,300,400,700" rel="stylesheet">
 
+    <link href="/imgs/favicon.ico" rel="icon" type="image/ico">
+
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/hanami.css" id="theme">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="lib/css/monokai.css">
 
     <!-- Printing and PDF exports -->
     <script>
@@ -64,40 +66,43 @@
             </section>
             <section>
                 <section>
-                    <h4>How you keep a framework <strong>modern</strong>?</h4>
-                </section>
-                <section>
-                    <h3>Adapt & Adopt</h3>
-                    <p>
-                        Useful techniques
-                        <span class="fragment">& ideas</span>
-                    </p>
-                    <aside class="notes">
-                        A lot of cool ideas have appeared over the years
-                    </aside>
-                </section>
-                <section>
-                    <h3>But how then you don't end up with a mess?</h3>
-                </section>
-                <section>
-                    <h3>Reshape the features
-                        <span class="fragment">
-                            <strong>But</strong>
-                            Keep the guiding pillars</span>
-                    </h3>
-                    <ol>
+                    <h3>Guiding Principles</h3>
+                    <ul>
                         <li class="fragment">Strong OOP</li>
                         <li class="fragment">Testability</li>
                         <li class="fragment">Ease of Use</li>
                         <li class="fragment">Productivity</li>
-                    </ol>
+                    </ul>
                 </section>
+                <section>
+                    <h4>How you keep a framework <strong>modern</strong>?</h4>
+                    <aside class="notes">
+                        Architectural Guidance
+                    </aside>
+                </section>
+                <section>
+                    <h3>Adapt & Adopt</h3>
+                    <p>
+                        <span class="code">/(?:Power|Use)ful/</span> techniques
+                    </p>
+                    <aside class="notes">
+                        A lot of cool ideas have appeared over the years and keep the principles in mind
+                    </aside>
+                </section>
+            </section>
+            <section>
+                <h2>So what's really changing?</h2>
+                <small>Finally!</small>
+                <aside class="notes">
+                    Meat & potatos of the presentation.
+                    Introduce feature, explain change
+                </aside>
             </section>
             <section>
                 <section>
                     <h3>Multiple apps</h3>
                     <p>
-                        Lots of configuration & Routing
+                        🤔 Lots of configuration & Routing
                     </p>
                     <aside class="notes">
                         Hanami suports multiple apps so you can go monolith first
@@ -143,8 +148,8 @@ end
                     </code></pre>
                 </section>
                 <section>
-                    <h3>Unification of App configs</h3>
-                    <p> Secure and sane defaults.</p>
+                    <h3>💡 Unification of App configs</h3>
+                    <p>Secure and sane defaults.</p>
                     <small class="fragment">Override when/where needed.</small>
                 </section>
                 <section>
@@ -159,9 +164,7 @@ end
                     <pre><code data-trim>
 # config/routes.rb
 Hanami.application.routes do
-  mount :web, at: '/' do
-    root to: 'home#index'
-  end
+  mount(:web, at: '/') { root to: 'home#index' }
 
   mount :admin, at: '/admin' do
     get '/dashboard', to: 'dashboard#index'
@@ -176,12 +179,12 @@ end
             </section>
             <section>
                 <section>
-                    <h3>Functional Programming</h3>
+                    <h3>Functional Programming 🔥</h3>
                     <p>Everyone seems to 💖 it.</p>
-                    <p class="fragment">but we also 💖 Ruby</p>
+                    <small class="fragment">but we 💖 Ruby too</small>
                 </section>
                 <section>
-                    <h3>Thankfully Ruby is multi-paradigm</h3>
+                    <h3><span class="red">Ruby</span> is multi-paradigm</h3>
                     <small>Inspiration from FP techniques for better OO</small>
                 </section>
                 <section>
@@ -318,6 +321,7 @@ end
     <script>
         // More info https://github.com/hakimel/reveal.js#configuration
         Reveal.initialize({
+            navigationMode: 'linear',
             controls: true,
             progress: true,
             center: true,
