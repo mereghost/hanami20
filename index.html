@@ -61,7 +61,7 @@
                 <h2>What's <a href="https://hanamirb.org">Hanami</a>?</h2>
                 <p class="fragment fade-in">Hanami is a <strong>modern</strong> web framework for Ruby</p>
                 <aside class="notes">
-                    What is modern?
+                    Born Lotus > IBM
                 </aside>
             </section>
             <section>
@@ -77,7 +77,7 @@
                 <section>
                     <h4>How you keep a framework <strong>modern</strong>?</h4>
                     <aside class="notes">
-                        Architectural Guidance
+                        What is modern? > Architectural Guidance
                     </aside>
                 </section>
                 <section>
@@ -91,8 +91,8 @@
                 </section>
             </section>
             <section>
-                <h2>So what's really changing?</h2>
-                <small>Finally!</small>
+                <h2>The Road to 2.0</h2>
+                <small>Or How are we breaking stuff</small>
                 <aside class="notes">
                     Meat & potatos of the presentation.
                     Introduce feature, explain change
@@ -100,7 +100,7 @@
             </section>
             <section>
                 <section>
-                    <h3>Multiple apps</h3>
+                    <h3><strong>Feature:</strong> Multiple apps</h3>
                     <p>
                         🤔 Lots of configuration & Routing
                     </p>
@@ -135,7 +135,17 @@ end
                 </code></pre>
                 </section>
                 <section>
-                    <pre><code data-trim data-line-numbers="1-5">
+                    <pre><code data-trim data-line-numbers="4-6">
+# apps/api/config/routes.rb
+# get '/hello', to: ->(env) { [200, {}, ['Hello from Hanami!']] }
+
+post '/oauth/token', to: 'token#create'
+resources :accounts
+resources :profiles
+                    </code></pre>
+                        
+
+                    <pre><code data-trim data-line-numbers="2-5,9">
 # config/environment.rb
 Hanami.configure do
   mount Api::Application, at: '/api'
@@ -179,20 +189,23 @@ end
             </section>
             <section>
                 <section>
-                    <h3>Functional Programming 🔥</h3>
-                    <p>Everyone seems to 💖 it.</p>
-                    <small class="fragment">but we 💖 Ruby too</small>
+                    <h3>Brief Interlude</h3>
+                    <p>Let's talk about the request/response flow</p>
                 </section>
                 <section>
-                    <h3><span class="red">Ruby</span> is multi-paradigm</h3>
-                    <small>Inspiration from FP techniques for better OO</small>
-                </section>
-                <section>
-                    <h3>Pipelines</h3>
+                    <h3 class="fragment">Pipeline</h3>
                     <img class="no-border" src="imgs/flow.svg" alt="Flow">
                     <aside class="notes">
                         Anyone talked about Flow Based Programming?
                     </aside>
+                </section>
+                <section>
+                    <h3>Functional Programming 🔥</h3>
+                    <p class="fragment">Everyone seems to 💖 it.</p>
+                </section>
+                <section>
+                    <h3><span class="red">Ruby</span> is multi-paradigm</h3>
+                    <small>Inspiration from FP techniques for better OO</small>
                 </section>
                 <section>
                     <h3>Small & very focused components</h3>
@@ -209,7 +222,7 @@ end
                     </code></pre>
                 </section>
                 <section>
-                    <h3>💡 an interface for functions</h3>
+                    <h3>💡 an interface for those functions</h3>
                     <p>
                         <span class="code">#call</span> to the rescue</p>
                 </section>
@@ -282,7 +295,7 @@ end
             <section>
                 <section>
                     <h3>Ecosystem</h3>
-                    <p>A part of the Ruby community share these principles</p>
+                    <p>A part of the Ruby community share these same principles</p>
                 </section>
                 <section>
                     <h2>And target <span style="color: #F00; font-weight: 400">Ruby</span> itself</h2>
